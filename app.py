@@ -1,10 +1,14 @@
 import streamlit as st
 import requests
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 
-API_KEY = st.secrets["OPENWEATHER_API_KEY"]
+load_dotenv()
+API_KEY = st.secrets.get("OPENWEATHER_API_KEY", os.getenv("OPENWEATHER_API_KEY"))
 if not API_KEY:
     st.error("⚠️ No API key found! Please set OPENWEATHER_API_KEY in Streamlit Secrets.")
+
 st.set_page_config(page_title="Weather App", page_icon="✨", layout='centered')
 
 st.markdown(
