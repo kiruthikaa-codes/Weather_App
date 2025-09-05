@@ -3,6 +3,8 @@ import requests
 from datetime import datetime
 
 API_KEY = st.secrets["OPENWEATHER_API_KEY"]
+if not API_KEY:
+    st.error("⚠️ No API key found! Please set OPENWEATHER_API_KEY in Streamlit Secrets.")
 st.set_page_config(page_title="Weather App", page_icon="✨", layout='centered')
 
 st.markdown(
